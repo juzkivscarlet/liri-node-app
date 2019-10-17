@@ -87,7 +87,7 @@ function spotifyThisSong(song) {
         };
 
         console.log("'"+returnSong.title+"' is a track by "+returnSong.artist+". It appears as track #"+returnSong.track_num+" out of "+returnSong.album.total_songs+
-            " on their "+returnSong.album.release_year+" album, "+returnSong.album.title+".");
+            ", and runs for a time of"+returnSong.duration+". It appears on their "+returnSong.album.release_year+" album, "+returnSong.album.title+".");
         console.log("Listen to it here: "+returnSong.preview);
     });
 }
