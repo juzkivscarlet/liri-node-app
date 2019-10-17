@@ -21,7 +21,7 @@ if(command=='concert-this') {
 logCommand(command,commandArg);
 
 function logCommand(command,args) {
-    var log = command+" "+args;
+    var log = command+" "+args+"\n";
     fs.appendFile("./log.txt",log,function(err) {
         if(err) throw err;
     });
