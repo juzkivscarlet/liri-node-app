@@ -6,12 +6,7 @@ var fs = require('fs');
 var spotify = new Spotify(keys.spotify);
 
 var command = process.argv[2];
-var commandArg = "";
-
-for(var i=3; i<process.argv.length; i++) {
-    commandArg += process.argv[i];
-    if(i!=process.argv.length) commandArg += " ";
-}
+var commandArg = process.argv.slice(3).join(" ");
 
 if(command=='concert-this') {
     concertThis(commandArg);
@@ -21,6 +16,15 @@ if(command=='concert-this') {
     movieThis(commandArg);
 } else if(command=='do-what-it-says') {
     doWhatItSays('./random.txt');
+}
+
+logCommand(command,commandArg);
+
+function logCommand(command,args) {
+    var log = command+" "+args;
+    fs.appendFile("./log.txt",log,function(err) {
+        if(err) throw err;
+    });
 }
 
 function concertThis(artist) {
